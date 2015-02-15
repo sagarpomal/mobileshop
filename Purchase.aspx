@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage.master" AutoEventWireup="false" CodeFile="Purchase.aspx.vb" Inherits="Purchase" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
    <br />
     <asp:Label ID="Label1" runat="server" Text="Enter Stock" Font-Bold="True" Font-Size="Large"></asp:Label>
     <br />
@@ -16,7 +17,8 @@
                                             </div>
                                             
                                         </div>
-                                        
+                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                             <ContentTemplate>
                                         <div class="form-group">
                                             <asp:Label ID="Label2" runat="server" Text="Supplier" Font-Bold="True" Font-Size="Small"></asp:Label>
                                             <asp:DropDownList ID="p_supplier" class="form-control" runat="server">
@@ -75,10 +77,25 @@
                                             <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
                                             <WeekendDayStyle BackColor="#FFFFCC" />
                                         </asp:Calendar> 
+                                                
+                                    
                                         <asp:Button ID="p_add_stock" runat="server" class="btn btn-primary" Text="Add Stock" />
                                         
                                         <button type="reset" class="btn btn-default">Reset Button</button>
+
+                                        </ContentTemplate>
+                                  </asp:UpdatePanel>
+
+                                        
                                     </form>
+
+                                     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
+
+                                        <ProgressTemplate>
+                                            <asp:Label runat="server" Text="Adding..." Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                                        </ProgressTemplate>
+                                            
+                                        </asp:UpdateProgress>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                

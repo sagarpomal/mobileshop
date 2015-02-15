@@ -24,7 +24,7 @@ Partial Class Purchase
         Dim tot As Integer
         tot = p_cost_price.Text * p_quantity.Text
         obj1.adddata("insert into add_phone values('" & TextBox2.Text & "','" & p_type.Text & "','" & p_company.Text & "','" & p_supplier.Text & "','" & p_model_no.Text & "','" & p_quantity.Text & "','" & p_cost_price.Text & "', '" & tot & " ')")
-        MsgBox("Added")
+        'MsgBox("Added")
         
 
         ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Record Inserted Successfully')", True)
