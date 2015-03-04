@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage.master" AutoEventWireup="false" CodeFile="Purchase.aspx.vb" Inherits="Purchase" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    
+    
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
    <br />
     <asp:Label ID="Label1" runat="server" Text="Enter Stock" Font-Bold="True" Font-Size="Large"></asp:Label>
@@ -10,15 +14,11 @@
                                 <div class="col-lg-6">
                                     <form role="form">
                                         <div class="form-group">
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Phones
-                                                </label>
-                                            </div>
-                                            
+                                                                                       
                                         </div>
                                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                              <ContentTemplate>
+                                                 
                                         <div class="form-group">
                                             <asp:Label ID="Label2" runat="server" Text="Supplier" Font-Bold="True" Font-Size="Small"></asp:Label>
                                             <asp:DropDownList ID="p_supplier" class="form-control" runat="server">
@@ -36,7 +36,10 @@
                                         <div class="form-group">
                                             <asp:Label ID="Label6" runat="server" Text="Company" Font-Bold="True" Font-Size="Small"></asp:Label>
                                             <asp:DropDownList ID="p_company" class="form-control" runat="server">
+                                                <asp:ListItem>Microsoft</asp:ListItem>
+                                                <asp:ListItem>Apple</asp:ListItem>
                                                 <asp:ListItem>Nokia</asp:ListItem>
+                                                <asp:ListItem>Motorola</asp:ListItem>
                                                 <asp:ListItem>Samsung</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
@@ -86,16 +89,35 @@
                                         </ContentTemplate>
                                   </asp:UpdatePanel>
 
-                                        
-                                    </form>
-
-                                     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
+                                        <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
 
                                         <ProgressTemplate>
-                                            <asp:Label runat="server" Text="Adding..." Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                                            <div style="background-color: white; filter:alpha(opacity=60); opacity:0.60; width: 100%; top: 0px; left: 0px; position: fixed; height: 100%;">
+        </div>
+          <div style="margin:auto;
+              font-family:Trebuchet MS;
+              filter: alpha(opacity=100);
+              opacity: 1;
+              font-size:small;
+              vertical-align: middle;
+              top: 45%;
+              position: fixed;
+              right: 45%;
+              color: #2f302f;
+              text-align: center;
+              
+              height: 100px;
+              ">
+                <img src="img/poi_blue.gif" alt="Loading"  />
+                
+                
+        
                                         </ProgressTemplate>
                                             
                                         </asp:UpdateProgress>
+                                    </form>
+
+                                     
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                
@@ -107,5 +129,6 @@
                         <!-- /.panel-body -->
                     </div>
     
+        
 </asp:Content>
 
