@@ -15,6 +15,7 @@
         
             
        <asp:Label ID="Label4" runat="server" Text="Enter Search Keyword" Font-Bold="True" Font-Size="Small"></asp:Label>
+
         
             
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -25,7 +26,19 @@
             </ajax:AutoCompleteExtender>
         <asp:TextBox ID="txtCountry" class="form-control" runat="server" AutoPostBack="True"></asp:TextBox>
         <div>
-            
+            <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
+
+                                        <ProgressTemplate>
+                                            <div style="background-color: white; filter:alpha(opacity=60); opacity:0.60; width: 100%; top: 20px; left: 0px; position: fixed; height: 100%;">
+        </div>
+         
+                <img src="img/poi_blue.gif" alt="Loading"  />
+                
+                
+        
+                                        </ProgressTemplate>
+                                            
+                                        </asp:UpdateProgress>
             <br />
 
                 <asp:GridView ID="GridView2" runat="server" CellPadding="4" CssClass="table table-striped table-bordered table-hover dataTable no-footer" ForeColor="#333333" GridLines="None">
@@ -43,39 +56,11 @@
                 </asp:GridView>
                
               </ContentTemplate>
-                <Triggers>
-<asp:AsyncPostBackTrigger ControlID = "GridView2" />
-</Triggers>
+                
             </asp:UpdatePanel>
     
 
-             <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
-
-                                        <ProgressTemplate>
-                                            <div style="background-color: white; filter:alpha(opacity=60); opacity:0.60; width: 100%; top: 0px; left: 0px; position: fixed; height: 100%;">
-        </div>
-          <div style="margin:auto;
-              font-family:Trebuchet MS;
-              filter: alpha(opacity=100);
-              opacity: 1;
-              font-size:small;
-              vertical-align: middle;
-              top: 45%;
-              position: fixed;
-              right: 45%;
-              color: #2f302f;
-              text-align: center;
-              
-              height: 100px;
-              ">
-                <img src="img/poi_blue.gif" alt="Loading"  />
-                
-                
-        
-                                        </ProgressTemplate>
-                                            
-                                        </asp:UpdateProgress>
-
+             
             </div>
         </form>
 
