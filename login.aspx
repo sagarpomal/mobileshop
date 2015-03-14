@@ -38,7 +38,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In to <strong>MobileShop</strong></h3>
+                        <h3 class="panel-title">GEPlease Sign In to <strong>MobileShop</strong></h3>
                     </div>
                     <div class="panel-heading">
                         <asp:Label ID="Label1" class="panel-title" runat="server" Text="Label" ForeColor="#FF3300" Visible="False"></asp:Label>
