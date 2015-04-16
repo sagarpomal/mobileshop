@@ -38,31 +38,32 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">GEPlease Sign In to <strong>MobileShop</strong></h3>
+                        <h3 class="panel-title">Please Sign In to <strong>MobileShop</strong></h3>
                     </div>
-                    <div class="panel-heading">
-                        <asp:Label ID="Label1" class="panel-title" runat="server" Text="Label" ForeColor="#FF3300" Visible="False"></asp:Label>
-                    </div>
+                  
                     <div class="panel-body">
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    
-                                    <asp:TextBox ID="TextBox1" class="form-control" placeholder="E-mail" runat="server" type="email" ></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter User Name" ControlToValidate="txt_username" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="txt_username" class="form-control" placeholder="User Name" runat="server"  ></asp:TextBox>
                                 </div>
                                 <div class="form-group">
-                                    
-                                    <asp:TextBox ID="TextBox2" class="form-control" placeholder="Password" runat="server" TextMode="Password"  ></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Enter Password" ControlToValidate="txt_password" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="txt_password" class="form-control" placeholder="Password" runat="server" TextMode="Password"  ></asp:TextBox>
                                 </div>
-                                <div class="checkbox">
+                                <%--<div class="checkbox">
                                     <label>
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                     </label>
-                                </div>
+                                </div>--%>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-success btn-block" Text="Login" />
-                                
+                                <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-primary btn-block" Text="Login" />
+                                <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-success btn-block" Text="Need Account? Register here" CausesValidation="False" />
                             </fieldset>
+                            
+                          
+                            
                         </form>
                     </div>
                 </div>

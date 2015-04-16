@@ -13,31 +13,34 @@ Partial Class login
     End Sub
    
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        
+
         'Me.Page.ClientScript.RegisterForEventValidation(Button1.UniqueID.ToString)
         'ClientScript.RegisterForEventValidation(TextBox1.ID)
         'Response.Redirect("Dashboard.aspx")
-        If TextBox1.Text = "sagar@live.com" And TextBox2.Text = "sagar" Then
-            Session("login") = "done"
-            'MsgBox(Session.Item("login"))
-            'Server.Transfer("Default.aspx")
-            Response.Redirect("~/Default.aspx", True)
+        'If TextBox1.Text = "sagar@live.com" And TextBox2.Text = "sagar" Then
+        '    Session("login") = "done"
+        '    'MsgBox(Session.Item("login"))
+        '    'Server.Transfer("Default.aspx")
+        '    Response.Redirect("~/Default.aspx", True)
 
-        Else
-            Label1.Visible = True
-            Label1.Text = "Please enter valid details !"
-            'Page.ClientScript.RegisterStartupScript("scriptkey", "<script>alert('your message');</script>")
-            'MsgBox("Enter valid details !")
-            'Dim message As String = "Please enter valid details"
-            'Dim sb As New System.Text.StringBuilder()
-            'sb.Append("<script type = 'text/javascript'>")
-            'sb.Append("window.onload=function(){")
-            'sb.Append("alert('")
-            'sb.Append(message)
-            'sb.Append("')};")
-            'sb.Append("</script>")
-            'ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+        'Else
+        '    Label1.Visible = True
+        '    Label1.Text = "Please enter valid details !"
+        'Page.ClientScript.RegisterStartupScript("scriptkey", "<script>alert('your message');</script>")
+        'MsgBox("Enter valid details !")
+        'Dim message As String = "Please enter valid details"
+        'Dim sb As New System.Text.StringBuilder()
+        'sb.Append("<script type = 'text/javascript'>")
+        'sb.Append("window.onload=function(){")
+        'sb.Append("alert('")
+        'sb.Append(message)
+        'sb.Append("')};")
+        'sb.Append("</script>")
+        'ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
 
-        End If
+        'End If
 
     End Sub
 
@@ -46,5 +49,10 @@ Partial Class login
         If Session("login") = "done" Then
             Response.Redirect("~/Default.aspx", True)
         End If
+        
+    End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Response.Redirect("/Register.aspx")
     End Sub
 End Class

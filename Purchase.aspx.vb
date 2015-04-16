@@ -13,11 +13,8 @@ Partial Class Purchase
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If Calendar1.Visible = False Then
-            Calendar1.Visible = True
-        Else
-            Calendar1.Visible = False
-        End If
+        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Record Inserted Successfully')", True)
+        Calendar1.Visible = False
     End Sub
 
     Protected Sub p_add_stock_Click(sender As Object, e As EventArgs) Handles p_add_stock.Click
@@ -26,7 +23,7 @@ Partial Class Purchase
         tot = p_cost_price.Text * p_quantity.Text
 
         obj1.adddata("insert into add_phone values('" & TextBox2.Text & "','" & p_type.Text & "','" & p_company.Text & "','" & p_supplier.Text & "','" & p_model_no.Text & "','" & p_quantity.Text & "','" & p_cost_price.Text & "', '" & tot & " ')")
-        'MsgBox("Added")
+        MsgBox("Added")
 
 
         ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Record Inserted Successfully')", True)

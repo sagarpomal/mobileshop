@@ -2,11 +2,11 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" ng-app="RDash">
 <head runat="server">
         <title></title>
-        <asp:ContentPlaceHolder id="head" runat="server">
-        </asp:ContentPlaceHolder>
+        <%--<asp:ContentPlaceHolder id="head" runat="server">
+        </asp:ContentPlaceHolder>--%>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,11 +17,25 @@
             <script src="lib/js/main.min.js"></script>
             <!-- Custom Scripts -->
             <script type="text/javascript" src="js/dashboard.min.js"></script>
+
+            <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+            
+
+            
+            <!-- Custom Fonts -->
+            <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
 </head>
 <body ng-controller="MasterCtrl">
-    <form id="form1" runat="server">
-
-        <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+     <form id="form1" runat="server">
+    <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
@@ -116,10 +130,10 @@
             </div>
             <div class="meta">
               <div class="page">
-                Dashboard
+                MobileShop
               </div>
               <div class="breadcrumb-links">
-                Home / Dashboard
+                SaaS
               </div>
             </div>
           </div>
@@ -127,29 +141,38 @@
         <!-- End Header Bar -->
 
         <!-- Main Content -->
-        <div ui-view></div>
-          <div>
+        <div ui-view>
+
+           
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
-    </div>
+    
+
+        
+        </div>
 
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->
   </div><!-- End Page Wrapper -->
+    
 
 
 
 
+   <%-- <script src="js/jquery.js"></script>--%>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
+   
 
+    
 
-
-
+    </form>
 
 
     
-    </form>
+    
 </body>
 </html>

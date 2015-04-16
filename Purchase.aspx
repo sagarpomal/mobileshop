@@ -7,12 +7,13 @@
     
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
    <br />
+    
     <asp:Label ID="Label1" runat="server" Text="Enter Stock" Font-Bold="True" Font-Size="Large"></asp:Label>
     <br />
 <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    
                                         <div class="form-group">
                                                                                        
                                         </div>
@@ -70,7 +71,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Select Date" ControlToValidate="p_cost_price" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                                             <asp:TextBox class="form-control" ID="TextBox2" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="Button1" class="btn btn-default" runat="server" Text="Date Picker" />
                                         </div>                                                           
-                                        <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px" Visible="False">
+                                        <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
                                             <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
                                             <NextPrevStyle VerticalAlign="Bottom" />
                                             <OtherMonthDayStyle ForeColor="#808080" />
@@ -115,7 +116,7 @@
                                         </ProgressTemplate>
                                             
                                         </asp:UpdateProgress>
-                                    </form>
+                                    
 
                                      
                                 </div>
@@ -125,9 +126,7 @@
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
+                      
     
         
 </asp:Content>
