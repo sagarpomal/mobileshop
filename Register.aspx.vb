@@ -39,30 +39,57 @@ Partial Class login
 
     Protected Sub txt_username_TextChanged(sender As Object, e As EventArgs) Handles txt_username.TextChanged
         'If txt_username.Text <> String.Empty Then
-        RequiredFieldValidator2.Validate()
-        If RequiredFieldValidator2.IsValid = True Then
-            If Not String.IsNullOrEmpty(txt_username.Text) Then
-                If Not String.IsNullOrWhiteSpace(txt_username.Text) Then
+        'RequiredFieldValidator2.Validate()
+        'rev.Validate()
+        If rev.IsValid = True Then
+            'If rev.Visible = False Then
+            obj = obj1.getdata("select username from auth_user where username = '" & txt_username.Text & "' ")
+            If obj.HasRows Then
+                rev.Validate()
+                RegularExpressionValidator2.Validate()
+                If RegularExpressionValidator2.IsValid = True Then
 
-                    obj = obj1.getdata("select username from auth_user where username = '" & txt_username.Text & "' ")
-                    If obj.HasRows Then
+                    If rev.IsValid = True Then
                         Label1.Visible = True
                         Label1.ForeColor = Drawing.Color.Red
                         Label1.Text = "User name not available"
                         txt_username.Focus()
                     Else
+                        Label1.Visible = False
+                    End If
+                Else
+                    Label1.Visible = False
+
+                End If
+            Else
+                rev.Validate()
+                RegularExpressionValidator2.Validate()
+
+                If RegularExpressionValidator2.IsValid = True Then
+                    If rev.IsValid = True Then
+
                         Label1.Visible = True
                         Label1.ForeColor = Drawing.Color.Green
                         Label1.Text = "User Available"
                         txt_password.Focus()
+                    Else
+                        Label1.Visible = False
                     End If
                 Else
                     Label1.Visible = False
                 End If
-            Else
-                Label1.Visible = False
+                'End If
+
+
+
             End If
-            'Label1.Visible = False
+        Else
+            Label1.Visible = False
         End If
+
+        'If System.Text.RegularExpressions.Regex.IsMatch(txt_username.Text, "[^\s]+") = False Then
+        '    Label1.Visible = False
+        'End If
+
     End Sub
 End Class

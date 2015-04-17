@@ -54,6 +54,8 @@
                                 </div>
                                 <div class="form-group"> 
                                     <asp:Label ID="Label1" runat="server" Text="Label" Visible="false" >dfdfdsa</asp:Label>
+                                    <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "txt_username" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{5,}$" runat="server" ForeColor="Red" ErrorMessage="Minimum 5 characters required."></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="rev" runat="server" ControlToValidate="txt_username" ErrorMessage="Spaces are not allowed!" ValidationExpression="[^\s]+" ForeColor="Red" Display="Dynamic" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Enter User Name" ControlToValidate="txt_username" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>                                   
                                     <asp:TextBox ID="txt_username" class="form-control" runat="server" placeholder="User Name" AutoPostBack="True"></asp:TextBox>                               
                                 </div>

@@ -42,7 +42,7 @@
                     </div>
                   
                     <div class="panel-body">
-                        <form role="form">
+                        
                             <fieldset>
                                 <div class="form-group">
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter User Name" ControlToValidate="txt_username" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -52,11 +52,12 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Enter Password" ControlToValidate="txt_password" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                     <asp:TextBox ID="txt_password" class="form-control" placeholder="Password" runat="server" TextMode="Password"  ></asp:TextBox>
                                 </div>
-                                <%--<div class="checkbox">
+                                <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        <asp:CheckBox ID="chkRememberME" runat="server"  />
+                                        Remember Me
                                     </label>
-                                </div>--%>
+                                </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-primary btn-block" Text="Login" />
                                 <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-success btn-block" Text="Need Account? Register here" CausesValidation="False" />

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" CodeFile="MasterPage_Main.master.vb" Inherits="MasterPage_Main" %>
+﻿<%@ Master Language="VB" CodeFile="MasterPage_Main - Copy.master.vb" Inherits="MasterPage_Main" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>MobileShop</title>
+	<title>RDash AngularJS</title>
   <!-- STYLES -->
   <link rel="stylesheet" href="lib/css/main.min.css"/>
   <!-- SCRIPTS -->
@@ -17,7 +17,6 @@
   <script type="text/javascript" src="js/dashboard.min.js"></script>
 </head>
 <body ng-controller="MasterCtrl">
-<form id="form1" runat="server">
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
     <!-- Sidebar -->
@@ -69,7 +68,7 @@
                   <img src="img/avatar.jpg">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  <%--<li class="dropdown-header">
+                  <li class="dropdown-header">
                     Joe Bloggs
                   </li>
                   <li class="divider"></li>
@@ -88,12 +87,11 @@
                       Menu Item
                     </a>
                   </li>
-                  <li class="divider"></li>--%>
+                  <li class="divider"></li>
                   <li class="link">
-                    <%--<a href="#">--%>
-                      <%--<asp:Button ID="Button1" runat="server" Text="Button" CausesValidation="false" />--%>
-                      <asp:LinkButton ID="LinkButton1" runat="server">Logout</asp:LinkButton>
-                    <%--</a>--%>
+                    <a href="#">
+                      Logout
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -114,17 +112,18 @@
             </div>
             <div class="meta">
               <div class="page">
-                MobileShop
+                Dashboard
               </div>
               <div class="breadcrumb-links">
-                SaaS
+                Home / Dashboard
               </div>
             </div>
           </div>
         </div>
         <!-- End Header Bar -->
 
-          pp<div ui-view>
+        <!-- Main Content -->
+        <div ui-view>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
 
         </div>
@@ -132,7 +131,5 @@
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->
   </div><!-- End Page Wrapper -->
-
-</form>
 </body>
 </html>
