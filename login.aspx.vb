@@ -31,13 +31,13 @@ Partial Class login
 
             'If chkRememberME.Checked Then
             Response.Cookies("UserName").Expires = DateTime.Now.AddDays(30)
-            Response.Cookies("Password").Expires = DateTime.Now.AddDays(30)
+            'Response.Cookies("Password").Expires = DateTime.Now.AddDays(30)
             'Else
             'Response.Cookies("UserName").Expires = DateTime.Now.AddDays(-1)
             'Response.Cookies("Password").Expires = DateTime.Now.AddDays(-1)
             'End If
             Response.Cookies("UserName").Value = txt_username.Text.Trim
-            Response.Cookies("Password").Value = txt_password.Text.Trim
+            'Response.Cookies("Password").Value = txt_password.Text.Trim
 
             Response.Redirect("/Purchase.aspx")
 

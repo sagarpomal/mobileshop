@@ -17,10 +17,7 @@ Partial Class Dashboard
 
 
         'End If
-        Dim str As String = "aa"
-        If Not Session("login") = "done" Then
-            Response.Redirect("~/login.aspx")
-        End If
+       
 
 
     End Sub

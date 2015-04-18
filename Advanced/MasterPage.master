@@ -1,0 +1,5 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/MasterPage_Main.master" AutoEventWireup="false" CodeFile="MasterPage.master.vb" Inherits="Advanced_MasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+</asp:Content>
+

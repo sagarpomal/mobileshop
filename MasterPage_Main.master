@@ -10,11 +10,12 @@
 
 	<title>MobileShop</title>
   <!-- STYLES -->
-  <link rel="stylesheet" href="lib/css/main.min.css"/>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/lib/css/main.min.css"/>
   <!-- SCRIPTS -->
-  <script src="lib/js/main.min.js"></script>
+  <script src="/lib/js/main.min.js"></script>
   <!-- Custom Scripts -->
-  <script type="text/javascript" src="js/dashboard.min.js"></script>
+  <script type="text/javascript" src="/js/dashboard.min.js"></script>
 </head>
 <body ng-controller="MasterCtrl">
 <form id="form1" runat="server">
@@ -25,25 +26,40 @@
       <ul class="sidebar">
         <li class="sidebar-main">
           <a ng-click="toggleSidebar()">
-            Dashboard
+            Navigation
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
-        <li class="sidebar-title"><span>NAVIGATION</span></li>
+        
         <li class="sidebar-list">
           <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/tables">Tables <span class="menu-icon fa fa-table"></span></a>
+          <a href="#/tables">Products<span class="menu-icon glyphicon glyphicon-briefcase"></span></a>
+        </li>
+          <li class="sidebar-list">
+          <a href="#">Orders <span class=" menu-icon glyphicon glyphicon-shopping-cart"></span></a>
+        </li>
+          <li class="sidebar-list">
+          <a href="#">Purchases <span class="menu-icon glyphicon glyphicon-plus"></span> </a>
+        </li>
+          <li class="sidebar-list">
+          <a href="#">Report Center <span class="menu-icon fa fa-table"></span></a>
+        </li>
+          <li class="sidebar-list">
+          <a href="#">Advanced <span class="menu-icon glyphicon glyphicon-cog"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">
-        <div class="col-xs-4">
-          <a href="https://github.com/rdash/rdash-angular" target="_blank">
-            Github
-          </a>
-        </div>
-        <div class="col-xs-4">
+        <br />
+        
+            <asp:Label ID="Label1" runat="server" Text="Built with ♥" ForeColor="White"></asp:Label>
+            
+            
+          
+        
+          
+       <%-- <div class="col-xs-4">
           <a href="https://github.com/rdash/rdash-angular/blob/master/README.md" target="_blank">
             About
           </a>
@@ -52,7 +68,7 @@
           <a href="#">
             Support
           </a>
-        </div>
+        </div>--%>
       </div>
     </div>
     <!-- End Sidebar -->
@@ -63,10 +79,12 @@
         <!-- Header Bar -->
         <div class="row header">
           <div class="col-xs-12">
+
             <div class="user pull-right">
+
               <div class="item dropdown">
                 <a href="#" class="dropdown-toggle">
-                  <img src="img/avatar.jpg">
+                  <img src="/img/avatar.jpg">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <%--<li class="dropdown-header">
@@ -92,7 +110,7 @@
                   <li class="link">
                     <%--<a href="#">--%>
                       <%--<asp:Button ID="Button1" runat="server" Text="Button" CausesValidation="false" />--%>
-                      <asp:LinkButton ID="LinkButton1" runat="server">Logout</asp:LinkButton>
+                      <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false">Logout</asp:LinkButton>
                     <%--</a>--%>
                   </li>
                 </ul>
@@ -111,6 +129,7 @@
                   </li>
                 </ul>
               </div>
+
             </div>
             <div class="meta">
               <div class="page">
@@ -120,12 +139,14 @@
                 SaaS
               </div>
             </div>
+
           </div>
+
         </div>
         <!-- End Header Bar -->
 
-          pp<div ui-view>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+         <div ui-view style="background-color:rgb(255, 255, 255)">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
 
         </div>
 
