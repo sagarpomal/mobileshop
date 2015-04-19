@@ -1,20 +1,15 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Products/MasterPage_Products.master" AutoEventWireup="false" CodeFile="Product_List.aspx.vb" Inherits="Products_Supplier_List" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Products/MasterPage_Products.master" AutoEventWireup="false" CodeFile="Inventory_List.aspx.vb" Inherits="Products_Supplier_List" %>
 <%@ MasterType VirtualPath="~/Products/MasterPage_products.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ChildContent1" Runat="Server">
     <br />
-    <div class="row">
-        <div class="col-lg-6">
-    <div class="btn-group" role="group" >
-        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" Text="Add New Product" class="btn btn-default" />
-    </div>
-    <br />
-    <br />
     
-    </div>
-    </div>
     <div class="form-group">
-    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="    Search here for Products"></asp:TextBox>
-    </div>  
+    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="    Search here for Inventory"></asp:TextBox>
+    </div>
+   <%--<asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Products/Products_add.aspx?Id={0}"
+            HeaderText="" ItemStyle-Width = "150" DataTextFormatString="View" >
+<ItemStyle Width="70px"></ItemStyle>--%>
+         
 
     <asp:GridView ID="GridView1" runat="server"  class="table" CellPadding="4"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#333333" />

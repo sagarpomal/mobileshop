@@ -9,10 +9,11 @@
     </div>
     <br />
     <br />
+    
+    </div>
+    </div>
     <div class="form-group">
-    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Search here for Suppliers"></asp:TextBox>
-    </div>
-    </div>
+    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="    Search here for Suppliers"></asp:TextBox>
     </div>
          
 

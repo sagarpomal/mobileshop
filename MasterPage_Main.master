@@ -14,8 +14,10 @@
   <link rel="stylesheet" href="/lib/css/main.min.css"/>
   <!-- SCRIPTS -->
   <script src="/lib/js/main.min.js"></script>
-  <!-- Custom Scripts -->
+
   <script type="text/javascript" src="/js/dashboard.min.js"></script>
+  <!-- Custom Scripts -->
+  
 </head>
 <body ng-controller="MasterCtrl">
 <form id="form1" runat="server">
@@ -153,7 +155,7 @@
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->
   </div><!-- End Page Wrapper -->
-
+    
 </form>
 </body>
 </html>

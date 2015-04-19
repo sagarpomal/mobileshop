@@ -19,6 +19,7 @@ Partial Class MasterPage_Tabs
         Me.id2.Attributes("class") = "active"
         Me.id3.Attributes("class") = ""
         Me.id4.Attributes("class") = ""
+        Response.Redirect("~/Products/Inventory_List.aspx")
     End Sub
 
     Protected Sub lk_Categories_Click(sender As Object, e As EventArgs) Handles lk_Categories.Click
@@ -26,6 +27,7 @@ Partial Class MasterPage_Tabs
         Me.id2.Attributes("class") = ""
         Me.id3.Attributes("class") = "active"
         Me.id4.Attributes("class") = ""
+        Response.Redirect("~/Products/Category_List.aspx")
     End Sub
 
     Protected Sub lk_Suppliers_Click(sender As Object, e As EventArgs) Handles lk_Suppliers.Click
