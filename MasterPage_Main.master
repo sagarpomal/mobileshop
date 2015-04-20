@@ -34,22 +34,28 @@
         </li>
         
         <li class="sidebar-list">
-          <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+            <asp:HyperLink ID="HyperLink1" NavigateUrl="Dashboard.aspx" runat="server">Dashboard<span class="menu-icon fa fa-tachometer"></span></asp:HyperLink>
+          <%--<a href="Dashboard.aspx">Dashboard </a>--%>
         </li>
         <li class="sidebar-list">
-          <a href="#/tables">Products<span class="menu-icon glyphicon glyphicon-briefcase"></span></a>
+            <asp:HyperLink ID="HyperLink2" NavigateUrl="~/Products/Product_List.aspx" runat="server">Products<span class="menu-icon glyphicon glyphicon-briefcase"></span></asp:HyperLink>
+          <%--<a href="Products/Product_List.aspx">Products<span class="menu-icon glyphicon glyphicon-briefcase"></span></a>--%>
         </li>
           <li class="sidebar-list">
-          <a href="#">Orders <span class=" menu-icon glyphicon glyphicon-shopping-cart"></span></a>
+              <asp:HyperLink ID="HyperLink3" NavigateUrl="~/Orders/Order_List.aspx" runat="server">Orders <span class=" menu-icon glyphicon glyphicon-shopping-cart"></span></asp:HyperLink>
+          <%--<a href="#">Orders <span class=" menu-icon glyphicon glyphicon-shopping-cart"></span></a>--%>
         </li>
           <li class="sidebar-list">
-          <a href="#">Purchases <span class="menu-icon glyphicon glyphicon-plus"></span> </a>
+              <asp:HyperLink ID="HyperLink4" NavigateUrl="~/Purchases/Purchase_List.aspx" runat="server">Purchases <span class="menu-icon glyphicon glyphicon-plus"></span></asp:HyperLink>
+          <%--<a href="#">Purchases <span class="menu-icon glyphicon glyphicon-plus"></span> </a>--%>
         </li>
           <li class="sidebar-list">
-          <a href="#">Report Center <span class="menu-icon fa fa-table"></span></a>
+              <asp:HyperLink ID="HyperLink5" NavigateUrl="~/Reports/Report_List.aspx" runat="server">Report Center <span class="menu-icon fa fa-table"></span></asp:HyperLink>
+          <%--<a href="#">Report Center <span class="menu-icon fa fa-table"></span></a>--%>
         </li>
           <li class="sidebar-list">
-          <a href="#">Advanced <span class="menu-icon glyphicon glyphicon-cog"></span></a>
+              <asp:HyperLink ID="HyperLink6" runat="server">Advanced <span class="menu-icon glyphicon glyphicon-cog"></span></asp:HyperLink>
+          <%--<a href="#">Advanced <span class="menu-icon glyphicon glyphicon-cog"></span></a>--%>
         </li>
       </ul>
       <div class="sidebar-footer">
@@ -126,9 +132,9 @@
                     Notifications
                   </li>
                   <li class="divider"></li>
-                  <li>
+                  <%--<li>
                     <a href="#">Server Down!</a>
-                  </li>
+                  </li>--%>
                 </ul>
               </div>
 

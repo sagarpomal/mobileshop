@@ -27,7 +27,7 @@ Partial Class login
                 obj1.CompanyID = obj.Item("company_id")
                 obj1.username = obj.Item("username")
                 Response.Cookies("CompanyID").Value = obj1.CompanyID
-                MsgBox(obj1.CompanyID)
+                'MsgBox(obj1.CompanyID)
             End While
 
             'If chkRememberME.Checked Then
@@ -41,7 +41,7 @@ Partial Class login
 
 
 
-            Response.Redirect("/Purchase.aspx")
+            Response.Redirect("/Dashboard.aspx")
 
 
 

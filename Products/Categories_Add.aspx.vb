@@ -38,7 +38,7 @@ Partial Class Products_Suppliers_View
         Page.Validate()
         If Page.IsValid() Then
             If Request.QueryString("CatID") <> "" Then
-                MsgBox(txt_category.Text)
+                'MsgBox(txt_category.Text)
                 OBJ1.adddata("update categories set category='" & txt_category.Text & "' where id='" & Request.QueryString("CatID") & "' ")
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Category Updated !')", True)
                 Response.Redirect("~/Products/Category_List.aspx")
