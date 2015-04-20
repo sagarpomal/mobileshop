@@ -17,6 +17,15 @@ Partial Class Products_Supplier_List
         'li = Page.Master.FindControl("id4")
 
         li.Attributes.Add("class", "active")
+        'If Not Page.IsPostBack Then
+        '    GridView1.DataSourceID = SqlDataSource2.ID
+        '    GridView1.DataBind()
+        '    TextBox1.Focus()
+
+        '    ' GridView1.DataBind()
+
+
+        'End If
         'Dim id4 As System.Web.UI.HtmlControls.HtmlGenericControl = DirectCast(Me.Master.FindControl("id4"), System.Web.UI.HtmlControls.HtmlGenericControl)
         'id4.Attributes("class") = "active"
 
@@ -39,8 +48,15 @@ Partial Class Products_Supplier_List
 
     Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         'GridView1.DataSource = SqlDataSource1
+        If TextBox1.Text <> "" Then
 
-        GridView1.DataBind()
-        TextBox1.Focus()
+            GridView1.DataSourceID = SqlDataSource1.ID
+            GridView1.DataBind()
+            TextBox1.Focus()
+        Else
+            GridView1.DataSourceID = SqlDataSource2.ID
+            GridView1.DataBind()
+            TextBox1.Focus()
+        End If
     End Sub
 End Class

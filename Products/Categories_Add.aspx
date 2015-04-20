@@ -11,13 +11,19 @@
 
     <div class="row">
         <div class="col-lg-6">
+            <div class="btn-group" role="group" >
+        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button2"  runat="server" Text="< Back to Categories" class="btn btn-default" CausesValidation="false"/>
+    </div>
+            <br />
+            <br />
+
     <div class="panel panel-default">
   <div class="panel-heading"><h4>Category Details </h4></div>
   <div class="panel-body">
     <br />
             <div class="form-group">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter Category Name" ControlToValidate="txt_category" ForeColor="Red" Display="Dynamic" ></asp:RequiredFieldValidator>                                    
-                <asp:TextBox ID="txt_category" runat="server" class="form-control" placeholder="Category Name"></asp:TextBox>
+                <asp:TextBox ID="txt_category" runat="server" class="form-control" placeholder="Category Name" AutoPostBack="True"></asp:TextBox>
                 
                
             </div>

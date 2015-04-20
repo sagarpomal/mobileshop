@@ -35,10 +35,14 @@
          
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-    <asp:GridView ID="GridView1" runat="server"  class="table" CellPadding="4"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" ForeColor="#333333" GridLines="None">
+    <asp:GridView ID="GridView1" runat="server"  class="table" CellPadding="4"  AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#333333" />
         <%--#284775--%>
         <Columns>
+            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Products/Categories_add.aspx?CatId={0}"
+            HeaderText="" ItemStyle-Width = "150" DataTextFormatString="View" >
+            <ItemStyle Width="70px"></ItemStyle>
+            </asp:HyperLinkField>
             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
             <asp:BoundField DataField="Category" HeaderText="Category" SortExpression="Category" />
             <asp:BoundField DataField="CompanyID" HeaderText="CompanyID" SortExpression="CompanyID" />
@@ -64,6 +68,12 @@
     <SelectParameters>
         <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
         <asp:ControlParameter ControlID="TextBox1" Name="Category" PropertyName="Text" Type="String" />
+    </SelectParameters>
+    </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [Category], [CompanyID] FROM [Categories] WHERE (([CompanyID] = @CompanyID) )">
+    <SelectParameters>
+        <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
+        
     </SelectParameters>
     </asp:SqlDataSource>
     
