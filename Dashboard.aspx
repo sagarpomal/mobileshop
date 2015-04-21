@@ -10,7 +10,7 @@
     <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
 </ul>--%>
   <br />
-      <h3>Welcome to MobileShop !</h3>
+      <h3>&nbsp;&nbsp; Welcome to MobileShop !</h3>
 <br />
 <br />
 

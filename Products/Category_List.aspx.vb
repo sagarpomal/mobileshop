@@ -38,7 +38,7 @@ Partial Class Products_Supplier_List
     'End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("~/Products/Categories_Add.aspx")
+        Response.Redirect("~/Products/Category_Add.aspx")
 
     End Sub
 

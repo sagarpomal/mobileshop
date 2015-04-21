@@ -92,7 +92,7 @@ Partial Class login
                 ' MsgBox(Request.Cookies("UserName").Value)
                 'MsgBox(obj1.username)
 
-                Response.Redirect("/Purchase.aspx")
+                Response.Redirect("/Dashboard.aspx")
 
             End If
         End If

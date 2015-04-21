@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Products/MasterPage_Products.master" AutoEventWireup="false" CodeFile="Categories_Add.aspx.vb" Inherits="Products_Suppliers_View" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Products/MasterPage_Products.master" AutoEventWireup="false" CodeFile="Category_Add.aspx.vb" Inherits="Products_Suppliers_View" %>
 
 <asp:Content  ID="Content1" ContentPlaceHolderID="ChildContent1" Runat="Server" >
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="btn-group" role="group" >
-        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button2"  runat="server" Text="< Back to Categories" class="btn btn-default" CausesValidation="false"/>
+        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button1"  runat="server" Text="< Back to Categories" class="btn btn-default" CausesValidation="false"/>
     </div>
             <br />
             <br />
@@ -28,7 +28,8 @@
                
             </div>
             <div class="btn-group" role="group" >
-                <asp:Button ID="Button1" runat="server" Text="Save" class="btn btn-default" CausesValidation="False" />
+                <asp:Button ID="Button2" runat="server" Text="Save" class="btn btn-default" CausesValidation="False" />
+                <asp:Button ID="Button3" runat="server" Text="Save and Add Another" class="btn btn-default" CausesValidation="False" />
                 <%--<asp:Button ID="Button2" runat="server" Text="Save and Add Another " class="btn btn-default" CausesValidation="False" />--%>
 
             </div>

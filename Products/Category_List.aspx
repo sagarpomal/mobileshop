@@ -39,13 +39,13 @@
         <AlternatingRowStyle BackColor="White" ForeColor="#333333" />
         <%--#284775--%>
         <Columns>
-            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Products/Categories_add.aspx?CatId={0}"
+            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Products/Category_add.aspx?CatId={0}"
             HeaderText="" ItemStyle-Width = "150" DataTextFormatString="View" >
             <ItemStyle Width="70px"></ItemStyle>
             </asp:HyperLinkField>
-            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" Visible="False" />
             <asp:BoundField DataField="Category" HeaderText="Category" SortExpression="Category" />
-            <asp:BoundField DataField="CompanyID" HeaderText="CompanyID" SortExpression="CompanyID" />
+            <asp:BoundField DataField="CompanyID" HeaderText="CompanyID" SortExpression="CompanyID" Visible="False" />
             
         </Columns>
 
@@ -70,7 +70,7 @@
         <asp:ControlParameter ControlID="TextBox1" Name="Category" PropertyName="Text" Type="String" />
     </SelectParameters>
     </asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [Category], [CompanyID] FROM [Categories] WHERE (([CompanyID] = @CompanyID) )">
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [Category], [CompanyID] FROM [Categories] WHERE (([CompanyID] = @CompanyID) )">
     <SelectParameters>
         <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
         
