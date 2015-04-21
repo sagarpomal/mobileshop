@@ -39,11 +39,12 @@
                             <div class="col-xs-4">   
                                 
                                 <div class="form-group">  
-                                    <asp:Label ID="Label3" runat="server" Text="Standard Price" Font-Size="Medium" ></asp:Label>   
+                                    <asp:Label ID="Label3" runat="server" Text="Standard Cost" Font-Size="Medium" ></asp:Label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txt_standard_cost" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>
+                                    <asp:RangeValidator id="RangeValidator1" ControlToValidate="txt_standard_cost" MinimumValue="1" MaximumValue="2147483647" Type="Double" ErrorMessage="more than 0" runat="server" ForeColor="Red" Display="Dynamic"/>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_standard_cost" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>                               
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txt_standard_cost" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
-                                                 
-                                    <asp:TextBox ID="txt_standard_cost" class="form-control" runat="server" placeholder="Standard Price" ></asp:TextBox>                               
+                                            
+                                    <asp:TextBox ID="txt_standard_cost" class="form-control" runat="server" placeholder="Standard Cost" ></asp:TextBox>                               
                                 </div>
                             </div>
 
@@ -51,8 +52,11 @@
                                 
                                 <div class="form-group">  
                                     <asp:Label ID="Label5" runat="server" Text="List Price" Font-Size="Medium" ></asp:Label>   
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txt_list_price" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>
+                                    <asp:RangeValidator id="Range1" ControlToValidate="txt_list_price" MinimumValue="1" MaximumValue="2147483647" Type="Double" ErrorMessage="more than 0" runat="server" ForeColor="Red" Display="Dynamic"/>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_list_price" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>                               
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txt_list_price" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
+                                    
+                                    
                                                  
                                     <asp:TextBox ID="txt_list_price" class="form-control" runat="server" placeholder="List Price" ></asp:TextBox>                               
                                 </div>
@@ -64,7 +68,13 @@
                                 <div class="form-group">  
                                     <asp:Label ID="Label6" runat="server" Text="Category" Font-Size="Medium" ></asp:Label>   
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Please Select" ControlToValidate="cb_supplier" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:DropDownList ID="cb_category" class="form-control" runat="server"></asp:DropDownList>            
+                                    <asp:DropDownList ID="cb_category" class="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="Category" DataValueField="ID"></asp:DropDownList>            
+                                    
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [CompanyID], [Category], [ID] FROM [Categories] WHERE ([CompanyID] = @CompanyID)">
+                                        <SelectParameters>
+                                            <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                     
                                 </div>
                             </div>
@@ -74,18 +84,24 @@
                                 <div class="form-group">  
                                     <asp:Label ID="Label7" runat="server" Text="Supplier" Font-Size="Medium" ></asp:Label>   
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Please Select" ControlToValidate="cb_supplier" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:DropDownList ID="cb_supplier" class="form-control" runat="server"></asp:DropDownList>            
+                                    <asp:DropDownList ID="cb_supplier" class="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="SupplierName" DataValueField="ID"></asp:DropDownList>            
+                                    
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [CompanyID], [SupplierName] FROM [Suppliers] WHERE ([CompanyID] = @CompanyID)">
+                                        <SelectParameters>
+                                            <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                     
                                 </div>
                             </div>
 
-                             <div class="col-xs-12">
+                            <%-- <div class="col-xs-12">
                                 <div class="form-group">
                                     <asp:Label ID="Label4" runat="server" Text="Description" Font-Size="Medium" ></asp:Label>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_desc" ForeColor="Red" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>                                    
                                     <asp:TextBox ID="txt_desc" class="form-control" runat="server" placeholder="Description"></asp:TextBox>
                                 </div>
-                                </div>
+                                </div>--%>
                               
 
 

@@ -32,7 +32,17 @@ Partial Class Products_Supplier_List
         Response.Redirect("~/Products/Products_Add.aspx")
     End Sub
 
-    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
+    Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        'GridView1.DataSource = SqlDataSource1
+        If TextBox1.Text = "" Then
 
+            GridView1.DataSourceID = SqlDataSource1.ID
+            GridView1.DataBind()
+            TextBox1.Focus()
+        Else
+            GridView1.DataSourceID = SqlDataSource2.ID
+            GridView1.DataBind()
+            TextBox1.Focus()
+        End If
     End Sub
 End Class
