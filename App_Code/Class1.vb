@@ -10,6 +10,9 @@ Public Class Class1
     Public ds As New DataSet
     Public CompanyID As Integer
     Public username As String
+    Public fl As Double = 1
+    'Public y As Double = 1
+
     'Public conn_str As String = "Data Source=WIN-52CLC5SG777;Initial Catalog=D:\MOBILE_SHOP.MDF;Integrated Security=True"
     Public conn_str As String = "Data Source=SAGAR-PC;Initial Catalog=Mobile;Integrated Security=True"
 
