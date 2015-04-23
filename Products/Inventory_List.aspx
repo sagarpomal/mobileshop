@@ -77,15 +77,21 @@
 
 <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Categories.ID AS Expr1, Categories.Category, Categories.CompanyID AS Expr3, Suppliers.ID, Suppliers.SupplierName, Suppliers.CompanyID, Suppliers.ID AS Expr4, Products.CompanyID AS Expr6 FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.ID INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID"></asp:SqlDataSource>--%>
     
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Products.CompanyID AS Expr6, Suppliers.ID, Suppliers.SupplierName, Inventory.ID AS Expr1, Inventory.ProductID, Inventory.Available, Inventory.CompanyID, Inventory.ReorderLevel, Suppliers.CompanyID AS Expr3 FROM Products INNER JOIN Inventory ON Products.ID = Inventory.ProductID INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID" >
-    </asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Products.CompanyID AS Expr6, Suppliers.ID, Suppliers.SupplierName, Inventory.ID AS Expr1, Inventory.ProductID, Inventory.Available, Inventory.CompanyID, Inventory.ReorderLevel, Suppliers.CompanyID AS Expr3 FROM Products INNER JOIN Inventory ON Products.ID = Inventory.ProductID AND Products.CompanyID = (@CompanyID) INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID" >
+     <SelectParameters>
+        <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
+        
+    </SelectParameters>
 
-<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Categories.ID AS Expr1, Categories.Category, Categories.CompanyID AS Expr3, Suppliers.ID, Suppliers.SupplierName, Suppliers.CompanyID, Suppliers.ID AS Expr4, Products.CompanyID AS Expr6 FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.ID AND Products.CompanyID = (@CompanyID) AND Products.ProductName LIKE '%' + @ProductName + '%'  INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID" >
-    <SelectParameters>
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Products.CompanyID AS Expr6, Suppliers.ID, Suppliers.SupplierName, Inventory.ID AS Expr1, Inventory.ProductID, Inventory.Available, Inventory.CompanyID, Inventory.ReorderLevel, Suppliers.CompanyID AS Expr3 FROM Products INNER JOIN Inventory ON Products.ID = Inventory.ProductID AND Products.CompanyID = (@CompanyID) AND Products.ProductName LIKE '%' + @ProductName + '%' INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID" >
+     <SelectParameters>
         <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
         <asp:ControlParameter ControlID="TextBox1" Name="ProductName" PropertyName="Text" Type="String" />
     </SelectParameters>
-    </asp:SqlDataSource>
+
+</asp:SqlDataSource>
 
 
          </ContentTemplate>
