@@ -132,65 +132,89 @@ Partial Class Products_Suppliers_View
         'Dim x As Integer = DataGridView1.RowCount - 1
         If Y <> 1 Then
             Dim x As Integer = GridView1.Rows.Count
-            'MsgBox(x.ToString)
-            Dim array1(x) As Double
-            While x > 0
+            If x > 0 Then
+                'MsgBox(x.ToString)
+                'Dim array1() As Double
+                'While x > 0
                 For Each row1 As GridViewRow In GridView1.Rows
-                    array1(x) = Convert.ToInt32(row1.Cells(0).Text)
+                    'ReDim Preserve array1(x)
+                    'array1(x) = Convert.ToInt32(row1.Cells(0).Text)
+                    
+                    If i = Convert.ToInt32(row1.Cells(0).Text) Then
+                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Product is Already added !')", True)
+
+                        Y = 0
+                        Exit For
+                    Else
+                        Y = 1
+                    End If
                     'MsgBox(array1(x))
                 Next
-                x -= 1
-            End While
+                'x -= 1
+                ' End While
+            Else
+                Y = 1
+            End If
             'MsgBox(array1(x))
 
-            For Each j In array1
+            'For Each j In array1
 
-                If i = j Then
-                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Product is Already added !')", True)
+            '    If i = j Then
+            '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Product is Already added !')", True)
 
-                    Y = 0
-                Else
-                    Y = 1
-                End If
-            Next
+            '        Y = 0
+            '    Else
+            '        Y = 1
+            '    End If
+            'Next
         End If
 
-        If Y = 1 Then
-            Dim dtCurrentTable As DataTable = DirectCast(ViewState("CurrentTable"), DataTable)
+            If Y = 1 Then
+                Dim dtCurrentTable As DataTable = DirectCast(ViewState("CurrentTable"), DataTable)
 
-            Dim R As DataRow = dtCurrentTable.NewRow
-            R("product_id") = cb_product_name.SelectedValue
-            R("product_name") = cb_product_name.SelectedItem
-            R("cost_price") = txt_unit_cost.Text
-            R("qty") = txt_qty.Text
+                Dim R As DataRow = dtCurrentTable.NewRow
+                R("product_id") = cb_product_name.SelectedValue
+                R("product_name") = cb_product_name.SelectedItem
+                R("cost_price") = txt_unit_cost.Text
+                R("qty") = txt_qty.Text
 
-            R("total") = txt_total_price.Text
+                R("total") = txt_total_price.Text
 
-            dtCurrentTable.Rows.Add(R)
-            GridView1.DataSource = dtCurrentTable
-            GridView1.DataBind()
-            fl = 0
-            txt_qty.Text = ""
-            txt_unit_cost.Text = ""
-            txt_total_price.Text = ""
-        End If
-        'Dim d As Integer = DataGridView1.RowCount - 1
-        'Dim c, g, f As Double
-        'While d >= 0
-        '    c += DataGridView1.Item("discount", d).Value
-        '    g += DataGridView1.Item("sub_total", d).Value
-        '    f += DataGridView1.Item("total", d).Value
-        '    'g += DataGridView1.Item(8, d).Value * DataGridView1.Item(9, d).Value
-        '    'f = g - c
-        '    txt_total_discount.Text = c
-        '    txt_sub_total.Text = g
-        '    txt_oveerall_total.Text = f
-        '    global_overall = f
+                dtCurrentTable.Rows.Add(R)
+                GridView1.DataSource = dtCurrentTable
+                GridView1.DataBind()
+                fl = 0
+                txt_qty.Text = ""
+                txt_unit_cost.Text = ""
+                txt_total_price.Text = ""
+            End If
+            'Dim d As Integer = DataGridView1.RowCount - 1
+            'Dim c, g, f As Double
+            'While d >= 0
+            '    c += DataGridView1.Item("discount", d).Value
+            '    g += DataGridView1.Item("sub_total", d).Value
+            '    f += DataGridView1.Item("total", d).Value
+            '    'g += DataGridView1.Item(8, d).Value * DataGridView1.Item(9, d).Value
+            '    'f = g - c
+            '    txt_total_discount.Text = c
+            '    txt_sub_total.Text = g
+            '    txt_oveerall_total.Text = f
+            '    global_overall = f
 
-        '    'txt_total.Text = f
-        '    'tot += DataGridView1.Item(8, d).Value
-        '    d -= 1
+            '    'txt_total.Text = f
+            '    'tot += DataGridView1.Item(8, d).Value
+            '    d -= 1
         'End While
+        'If GridView1.Rows.Count > 0 Then
+        Dim v As Double
+        For Each row2 As GridViewRow In GridView1.Rows
+            v += Convert.ToDouble(row2.Cells(4).Text)
+
+            'If txt_order_total.Text <> "" Then
+            txt_order_total.Text = v
+            'End If
+        Next
+        'End If
     End Sub
 
     Protected Sub txt_qty_TextChanged(sender As Object, e As EventArgs) Handles txt_qty.TextChanged, txt_unit_cost.TextChanged
@@ -198,4 +222,85 @@ Partial Class Products_Suppliers_View
     End Sub
 
 
+    Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        RequiredFieldValidator4.Validate()
+        txt_date.ValidateRequestMode = UI.ValidateRequestMode.Enabled
+
+        'MsgBox(GridView1.Rows.Count)
+        If GridView1.Rows.Count > 0 Then
+
+
+
+            OBJ1.adddata("insert into purchaseorders(orderdate, ordertotal, companyid) values ('" & txt_date.Text & "', '" & txt_order_total.Text & "', '" & Request.Cookies("companyid").Value & "')  ")
+            'MsgBox("Purchase Present")
+            'MsgBox(cb_date.Value.Date)
+
+            obj = OBJ1.getdata("select TOP 1 id from purchaseorders ORDER BY ID DESC")
+            Dim order_id As Integer
+            While obj.Read
+                order_id = obj.Item(0)
+            End While
+            OBJ1.close_conn()
+            'MsgBox(order_id)
+            'conn.Close()
+            ''MsgBox(ORDER_ID)
+            'Dim i As Integer = GridView1.Rows.Count
+            ''Dim tot, c, g, f As Double
+            'Dim pro_id As Integer
+            Dim availalbe As Integer
+            'While i >= 0
+            For Each row3 As GridViewRow In GridView1.Rows
+                obj = OBJ1.getdata("select productid, available from inventory where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
+                If obj.HasRows Then
+                    While obj.Read
+                        availalbe = obj.Item("available")
+                    End While
+                    OBJ1.close_conn()
+                    OBJ1.adddata("update inventory set available='" & (Convert.ToDouble(row3.Cells(2).Text) + availalbe) & "' where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
+                    OBJ1.adddata("insert into purchaseorderdetails(quantity, unitcost, purchaseorderid, productid, companyid) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "')  ")
+                Else
+                    OBJ1.close_conn()
+                    OBJ1.adddata("insert into inventory(productid, available) values('" & Convert.ToDouble(row3.Cells(0).Text) & "', '" & (Convert.ToDouble(row3.Cells(2).Text) + availalbe) & "')  ")
+                    OBJ1.adddata("insert into purchaseorderdetails(quantity, unitcost, purchaseorderid, productid, companyid) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "')  ")
+                End If
+                'While obj.Read
+                '    order_id = obj.Item(0)
+                'End While
+
+                'OBJ1.close_conn()
+
+
+            Next
+            'MsgBox("Done ! Jay Sachidanand !")
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Purchase Done !')", True)
+            Response.Redirect("~/Purchases/Purchase_List.aspx")
+            '    'MsgBox(DataGridView1.Rows(d).Cells(6).Value + "Product ID")
+            '    'MsgBox(DataGridView1.Rows(d).Cells(7).Value + " 5 is Sub Total")
+            '    adddata("insert into [Order Details] (orderid, productid, unitprice, quantity, discount, product_name, total_price) values ('" & ORDER_ID & "', '" & DataGridView1.Rows(i).Cells(0).Value & "', '" & DataGridView1.Rows(i).Cells(4).Value & "', '" & DataGridView1.Rows(i).Cells(3).Value & "', '" & DataGridView1.Rows(i).Cells(6).Value & "', '" & DataGridView1.Rows(i).Cells(1).Value & "', '" & DataGridView1.Rows(i).Cells(7).Value & "') ")
+
+
+            'i -= 1
+            'End While
+
+
+
+
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('No Product Selected !')", True)
+        End If
+    End Sub
+
+    Protected Sub GridView1_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles GridView1.RowDataBound
+        'e.Row.Cells[0].Visible=false;
+        'e.Row.Cells(0).Visible = False
+    End Sub
+
+    Protected Sub GridView1_RowDeleted(sender As Object, e As GridViewDeletedEventArgs) Handles GridView1.RowDeleted
+
+    End Sub
+
+    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
+
+    End Sub
 End Class

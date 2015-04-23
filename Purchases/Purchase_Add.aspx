@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Products/MasterPage_Products.master" AutoEventWireup="false" CodeFile="Purchase_Add.aspx.vb" Inherits="Products_Suppliers_View" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Purchases/MasterPage_Purchase.master" AutoEventWireup="false" CodeFile="Purchase_Add.aspx.vb" Inherits="Products_Suppliers_View" %>
 
 <asp:Content  ID="Content1" ContentPlaceHolderID="ChildContent1" Runat="Server">
 
@@ -13,7 +13,7 @@
         <%--<div class="col-xs-10">--%>
         <%--<div class="col-lg-6">--%>
             <div class="btn-group" role="group" >
-      <asp:Button ID="Button1"  runat="server" Text="< Back to Products" class="btn btn-default" CausesValidation="false"/>
+      <asp:Button ID="Button1"  runat="server" Text="< Back to Purchase List" class="btn btn-default" CausesValidation="false"/>
     </div>
 
 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -48,21 +48,7 @@
                                  </div>
                             
                             
-                            <div class="col-xs-4">   
-                                
-                                <div class="form-group">  
-                                    <asp:Label ID="Label7" runat="server" Text="Supplier" Font-Size="Medium" ></asp:Label>   
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Please Select" ControlToValidate="cb_supplier" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:DropDownList AutoPostBack="true" ID="cb_supplier" class="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="SupplierName" DataValueField="ID"></asp:DropDownList>            
-                                    
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [CompanyID], [SupplierName] FROM [Suppliers] WHERE ([CompanyID] = @CompanyID)">
-                                        <SelectParameters>
-                                            <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>
-                                    
-                                </div>
-                            </div>
+                            
 
                 </div>
             </div>           
@@ -79,7 +65,21 @@
    <ContentTemplate>
 <%--<div class="panel">--%>
   <div class="panel-body">
-
+                            <div class="col-xs-3">   
+                                
+                                <div class="form-group">  
+                                    <asp:Label ID="Label7" runat="server" Text="Supplier" Font-Size="Medium" ></asp:Label>   
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Please Select" ControlToValidate="cb_supplier" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:DropDownList AutoPostBack="true" ID="cb_supplier" class="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="SupplierName" DataValueField="ID"></asp:DropDownList>            
+                                    
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [CompanyID], [SupplierName] FROM [Suppliers] WHERE ([CompanyID] = @CompanyID)">
+                                        <SelectParameters>
+                                            <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                    
+                                </div>
+                            </div>
 
 
                             <div class="col-xs-4">
@@ -121,11 +121,11 @@
                                 </div>
                             </div>
                            
-                            <div class="col-xs-2">
+                            <div class="col-xs-1">
                                 <div class="form-group">  
                                     <br />
                                 <!-- Change this to a button or input when using this as a form -->
-                                <asp:Button ID="Button2" runat="server" class="btn btn-default" Text=" Add To Products  "  />
+                                <asp:Button ID="Button2" runat="server" class="btn btn-default" Text="Add"  />
                                 </div>
                             </div>
                             <%--<div class="col-xs-2">   
@@ -145,8 +145,11 @@
         <asp:GridView ID="GridView1" class="table" runat="server" AutoGenerateColumns="False">
 
             <Columns>
-                <asp:BoundField DataField="product_id" HeaderText="Product Code">
-                <ItemStyle Width="100px" />
+                <asp:BoundField DataField="product_id">
+                <ControlStyle Width="0px" />
+                <FooterStyle Width="0px" />
+                <HeaderStyle Width="0px" />
+                <ItemStyle Width="0px" Wrap="True" />
                 </asp:BoundField>
                 <asp:BoundField DataField="product_name" HeaderText="Product Name" />
                 <asp:BoundField DataField="qty" HeaderText="Quantity" />
@@ -172,23 +175,6 @@
 
        
     </div>
-       
-
-
-                            <div class="col-xs-2">
-                                <div class="form-group">  
-                                    <br />
-                                <!-- Change this to a button or input when using this as a form -->
-                                <asp:Button ID="Button3" runat="server" class="btn btn-default" Text="Place Order"  />
-                                <asp:Button ID="Button5" runat="server" class="btn btn-default" Text="Place Order and Add Another"  />
-                                </div>
-                            </div>
-
-
-
-
-
-
 
         </ContentTemplate>
 
@@ -196,6 +182,44 @@
      <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
     </Triggers>
 </asp:UpdatePanel>
+
+
+<asp:UpdatePanel ID="UpdatePanel3"  runat="server">
+   <ContentTemplate>
+
+                            <div class="col-xs-2">   
+                                
+                                <div class="form-group">  
+                                    <asp:Label ID="Label5" runat="server" Text="Total" Font-Size="Medium" ></asp:Label>
+                                    <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txt_unit_cost" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>--%>
+                                    <%--<asp:RangeValidator id="RangeValidator3" ControlToValidate="txt_unit_cost" MinimumValue="1" MaximumValue="2147483647" Type="Double" ErrorMessage="more than 0" runat="server" ForeColor="Red" Display="Dynamic"/>--%>
+                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_unit_cost" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>                               
+                                            
+                                    <asp:TextBox ID="txt_order_total"  ReadOnly="true" class="form-control" runat="server" placeholder="Unit Cost" ></asp:TextBox>                               
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-2 align">
+                                <div class="form-group">  
+                                    <br />
+                                <!-- Change this to a button or input when using this as a form -->
+
+                                    <asp:Button ID="Button3" class="btn btn-default" runat="server" Text="Add" CausesValidation="false" />
+                                
+                                </div>
+                            </div>
+
+        </ContentTemplate>
+
+        
+</asp:UpdatePanel>
+
+
+
+
+
+
+
 
 <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
 <ProgressTemplate>
