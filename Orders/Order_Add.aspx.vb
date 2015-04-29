@@ -65,7 +65,7 @@ Partial Class Products_Suppliers_View
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("~/Purchases/Purchase_List.aspx")
+        Response.Redirect("~/Orders/Order_List.aspx")
     End Sub
 
     Protected Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -178,25 +178,25 @@ Partial Class Products_Suppliers_View
             Dim availalbe As Integer
 
             For Each row3 As GridViewRow In GridView1.Rows
-                obj = OBJ1.getdata("select productid, available from inventory where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
-                If obj.HasRows Then
-                    While obj.Read
-                        availalbe = obj.Item("available")
-                    End While
-                    OBJ1.close_conn()
-                    OBJ1.adddata("update inventory set available='" & availalbe - (Convert.ToDouble(row3.Cells(2).Text)) & "' where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
-                    OBJ1.adddata("insert into orderdetails(quantity, unitprice, orderid, productid, companyid) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "')  ")
-                    Response.Redirect("~/Orders/Order_List.aspx")
-                    'Else
-                    '    OBJ1.close_conn()
-                    '    OBJ1.adddata("insert into inventory(productid, available) values('" & Convert.ToDouble(row3.Cells(0).Text) & "', '" & (Convert.ToDouble(row3.Cells(2).Text) + availalbe) & "')  ")
-                    '    OBJ1.adddata("insert into purchaseorderdetails(quantity, unitcost, purchaseorderid, productid, companyid) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "')  ")
-                Else
-                    'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('No Stock Available !')", True)
-                End If
+                ' obj = OBJ1.getdata("select productid, available from inventory where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
+                'If obj.HasRows Then
+                '    While obj.Read
+                '        availalbe = obj.Item("available")
+                '    End While
+                'OBJ1.close_conn()
+                OBJ1.adddata("update inventory set available='" & availalbe - (Convert.ToDouble(row3.Cells(2).Text)) & "' where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
+                OBJ1.adddata("insert into orderdetails(quantity, unitprice, orderid, productid, companyid, discount) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "', '" & Convert.ToDouble(row3.Cells(5).Text) & "')  ")
+
+                'Else
+                '    OBJ1.close_conn()
+                '    OBJ1.adddata("insert into inventory(productid, available) values('" & Convert.ToDouble(row3.Cells(0).Text) & "', '" & (Convert.ToDouble(row3.Cells(2).Text) + availalbe) & "')  ")
+                '    OBJ1.adddata("insert into purchaseorderdetails(quantity, unitcost, purchaseorderid, productid, companyid) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "')  ")
+                'Else
+                ''ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('No Stock Available !')", True)
+                'End If
 
             Next
-
+            Response.Redirect("~/Orders/Order_List.aspx")
             'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Purchase Done !')", True)
             'Response.Redirect("~/Purchases/Purchase_List.aspx")
 

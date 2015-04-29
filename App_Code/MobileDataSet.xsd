@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MobileDataSet" targetNamespace="http://tempuri.org/MobileDataSet.xsd" xmlns:mstns="http://tempuri.org/MobileDataSet.xsd" xmlns="http://tempuri.org/MobileDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="MobileConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MobileConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.MobileConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Invoice_DateTableAdapter" Name="Invoice_Date">
+            <MainSource>
+              <DbSource ConnectionRef="MobileConnectionString (Web.config)" DbObjectName="Mobile.dbo.Invoice_Date" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, OrderID, ProductID, Quantity, UnitPrice, Discount, CompanyID, Total_Price, Expr1, OrderDate, OrderSubTotal, OrderTotal, Expr2, CustomerID FROM dbo.Invoice_Date</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="OrderID" DataSetColumn="OrderID" />
+              <Mapping SourceColumn="ProductID" DataSetColumn="ProductID" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
+              <Mapping SourceColumn="CompanyID" DataSetColumn="CompanyID" />
+              <Mapping SourceColumn="Total_Price" DataSetColumn="Total_Price" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="OrderDate" DataSetColumn="OrderDate" />
+              <Mapping SourceColumn="OrderSubTotal" DataSetColumn="OrderSubTotal" />
+              <Mapping SourceColumn="OrderTotal" DataSetColumn="OrderTotal" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MobileDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="False">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Invoice_Date">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:int" />
+              <xs:element name="OrderID" type="xs:int" />
+              <xs:element name="ProductID" type="xs:int" minOccurs="0" />
+              <xs:element name="Quantity" type="xs:double" />
+              <xs:element name="UnitPrice" type="xs:decimal" />
+              <xs:element name="Discount" type="xs:double" minOccurs="0" />
+              <xs:element name="CompanyID" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_Price" type="xs:double" minOccurs="0" />
+              <xs:element name="Expr1" type="xs:int" />
+              <xs:element name="OrderDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OrderSubTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OrderTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Expr2" type="xs:int" minOccurs="0" />
+              <xs:element name="CustomerID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Invoice_Date" />
+      <xs:field xpath="mstns:ID" />
+      <xs:field xpath="mstns:Expr1" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

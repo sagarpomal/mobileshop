@@ -39,7 +39,10 @@
         <AlternatingRowStyle BackColor="White" ForeColor="#333333" />
         <%--#284775--%>
         <Columns>
-
+            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="~/Orders/Invoice.aspx?OrderID={0}"
+            HeaderText="" ItemStyle-Width = "150" DataTextFormatString="View" >
+            <ItemStyle Width="70px"></ItemStyle>
+            </asp:HyperLinkField>
             <asp:BoundField DataField="ID" HeaderText="Order No." SortExpression="ID" InsertVisible="False" ReadOnly="True" />
             <asp:BoundField DataField="OrderDate" HeaderText="Order Date" dataformatstring="{0:MM/dd/yyyy}" SortExpression="OrderDate" />
             <asp:BoundField DataField="OrderTotal" HeaderText="Order Total" SortExpression="OrderTotal" />
