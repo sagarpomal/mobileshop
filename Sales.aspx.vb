@@ -20,7 +20,7 @@ Partial Class Sales
         Dim OBJ1 As New Class1
 
         Dim obj As Data.SqlClient.SqlDataReader
-        obj = OBJ1.getdata("SELECT DISTINCT COMPANY FROM add_phone where company like '%" & TextBox1.Text & "%' ")
+        obj = OBJ1.getdata("SELECT DISTINCT category FROM categories where category like '%" & TextBox1.Text & "%' ")
 
         While (obj.Read)
             ListBox1.Items.Add(obj.Item(0))

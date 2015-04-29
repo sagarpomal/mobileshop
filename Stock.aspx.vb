@@ -7,17 +7,9 @@ Partial Class Stock
 
     End Sub
 
-
-
-
-
-    
-
-   
-
     Protected Sub txtCountry_TextChanged(sender As Object, e As EventArgs) Handles txtCountry.TextChanged
         System.Threading.Thread.Sleep(5000)
-        obj1.gridbind("select * from add_phone where company like '%" & txtCountry.Text & "%'")
+        obj1.gridbind("select * from products where productname like '%" & txtCountry.Text & "%'")
 
         Dim dt As System.Data.DataTable
         dt = obj1.ds.Tables("In")

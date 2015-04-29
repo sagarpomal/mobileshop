@@ -34,7 +34,7 @@ Public Class AutoComplete
     Public Function GetCompletionList(ByVal prefixText As String, ByVal count As Integer) As String()
 
         'ADO.Net
-        Dim strCn As String = "Data Source=WIN-52CLC5SG777;Initial Catalog=D:\MOBILE_SHOP.MDF;Integrated Security=True"
+        Dim strCn As String = "Data Source=SAGAR-PC;Initial Catalog=Mobile;Integrated Security=True"
         cn.ConnectionString = strCn
         Dim cmd As New SqlClient.SqlCommand
         cmd.Connection = cn
@@ -42,7 +42,7 @@ Public Class AutoComplete
         'Compare String From Textbox(prefixText) AND String From Column in DataBase(CompanyName)
         'If String from DataBase is equal to String from TextBox(prefixText) then add it to return ItemList
         '-----I Defined a parameter instead of passing value directly to prevent sql injection--------'
-        cmd.CommandText = "select DISTINCT company from add_phone where company like @myParameter"
+        cmd.CommandText = "select DISTINCT productname from products where productname like @myParameter"
         cmd.Parameters.AddWithValue("@myParameter", "%" + prefixText + "%")
 
         Try
@@ -64,7 +64,7 @@ Public Class AutoComplete
 
         For Each row As DataRow In dt.Rows
             ''String From DataBase(dbValues)
-            dbValues = row("company").ToString()
+            dbValues = row("productname").ToString()
             dbValues = dbValues.ToLower()
             txtItems.Add(dbValues)
         Next

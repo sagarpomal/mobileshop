@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Purchases/MasterPage_Purchase.master" AutoEventWireup="false" CodeFile="Purchase_Add.aspx.vb" Inherits="Products_Suppliers_View" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Orders/MasterPage_Orders.master" AutoEventWireup="false" CodeFile="Order_Add.aspx.vb" Inherits="Products_Suppliers_View" %>
 
 <asp:Content  ID="Content1" ContentPlaceHolderID="ChildContent1" Runat="Server">
 
@@ -13,14 +13,14 @@
         <%--<div class="col-xs-10">--%>
         <%--<div class="col-lg-6">--%>
             <div class="btn-group" role="group" >
-      <asp:Button ID="Button1"  runat="server" Text="< Back to Purchase List" class="btn btn-default" CausesValidation="false"/>
+      <asp:Button ID="Button1"  runat="server" Text="< Back to Order List" class="btn btn-default" CausesValidation="false"/>
     </div>
 
 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
     <ContentTemplate>
    
     <div class="panel panel-default">
-  <div class="panel-heading"><h4>Purchase Details </h4></div>
+  <div class="panel-heading"><h4>Order Details </h4></div>
   <div class="panel-body">
                             <div class="col-xs-3">
                                 <div class="form-group">
@@ -65,14 +65,14 @@
    <ContentTemplate>
 <%--<div class="panel">--%>
   <div class="panel-body">
-                            <div class="col-xs-3">   
+                            <div class="col-xs-2">   
                                 
                                 <div class="form-group">  
-                                    <asp:Label ID="Label7" runat="server" Text="Supplier" Font-Size="Medium" ></asp:Label>   
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Please Select" ControlToValidate="cb_supplier" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    <asp:DropDownList AutoPostBack="true" ID="cb_supplier" class="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="SupplierName" DataValueField="ID"></asp:DropDownList>            
+                                    <asp:Label ID="Label7" runat="server" Text="Customer" Font-Size="Medium" ></asp:Label>   
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Please Select" ControlToValidate="cb_customer" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:DropDownList AutoPostBack="true" ID="cb_customer" class="form-control" runat="server" DataSourceID="SqlDataSource2" DataTextField="CustomerName" DataValueField="ID"></asp:DropDownList>            
                                     
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [CompanyID], [SupplierName] FROM [Suppliers] WHERE ([CompanyID] = @CompanyID)">
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [CompanyID], [CustomerName] FROM [Customers] WHERE ([CompanyID] = @CompanyID)">
                                         <SelectParameters>
                                             <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
                                         </SelectParameters>
@@ -82,16 +82,16 @@
                             </div>
 
 
-                            <div class="col-xs-4">
+                            <div class="col-xs-3">
                                 <div class="form-group">
                                     <asp:Label ID="Label2" runat="server" Text="Product Name" Font-Size="Medium" ></asp:Label>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Selecyt This" ControlToValidate="cb_product_name" ForeColor="Red" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>                                    
                                     
-                                    <asp:DropDownList ID="cb_product_name" class="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="ProductName" DataValueField="ID"></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [ProductName], [CompanyID], [SupplierID] FROM [Products] WHERE (([CompanyID] = @CompanyID) AND ([SupplierID] = @SupplierID))">
+                                    <asp:DropDownList ID="cb_product_name" AutoPostBack="true" class="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="ProductName" DataValueField="ID"></asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [ProductName], [CompanyID], [SupplierID] FROM [Products] WHERE (([CompanyID] = @CompanyID) )">
                                         <SelectParameters>
                                             <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
-                                            <asp:ControlParameter ControlID="cb_supplier" Name="SupplierID" PropertyName="SelectedValue" Type="Int32" />
+                                            
                                         </SelectParameters>
                                     </asp:SqlDataSource>
                                 </div>
@@ -118,6 +118,17 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_unit_cost" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>                               
                                             
                                     <asp:TextBox ID="txt_unit_cost"  class="form-control" runat="server" placeholder="Unit Cost" ></asp:TextBox>                               
+                                </div>
+                            </div>
+                        <div class="col-xs-2">   
+                                
+                                <div class="form-group">  
+                                    <asp:Label ID="Label6" runat="server" Text="Discount (%)" Font-Size="Medium" ></asp:Label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txt_qty" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*$"></asp:RegularExpressionValidator>
+                                    <asp:RangeValidator id="RangeValidator3" ControlToValidate="txt_discount" MinimumValue="0" MaximumValue="100" Type="Integer" ErrorMessage="more than 0" runat="server" ForeColor="Red" Display="Dynamic"/>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_discount" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>                               
+                                            
+                                    <asp:TextBox ID="txt_discount" class="form-control" runat="server" placeholder="Discount" ></asp:TextBox>                               
                                 </div>
                             </div>
                            
@@ -153,7 +164,11 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="product_name" HeaderText="Product Name" />
                 <asp:BoundField DataField="qty" HeaderText="Quantity" />
-                <asp:BoundField DataField="cost_price" HeaderText="Cost Price" />
+                <asp:BoundField DataField="cost_price" HeaderText="Unit Price" />
+                <asp:BoundField DataField="sub_total" HeaderText="Sub Total" />
+                <asp:BoundField DataField="discount" HeaderText="Discount">
+                <ItemStyle Width="70px" />
+                </asp:BoundField>
                 <asp:BoundField DataField="total" HeaderText="Total" />
             </Columns>
 
@@ -186,28 +201,53 @@
 
 <asp:UpdatePanel ID="UpdatePanel3"  runat="server">
    <ContentTemplate>
-
+       
                             <div class="col-xs-2">   
                                 
                                 <div class="form-group">  
-                                    <asp:Label ID="Label5" runat="server" Text="Total" Font-Size="Medium" ></asp:Label>
-                                    <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txt_unit_cost" ErrorMessage="Only Numbers" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>--%>
-                                    <%--<asp:RangeValidator id="RangeValidator3" ControlToValidate="txt_unit_cost" MinimumValue="1" MaximumValue="2147483647" Type="Double" ErrorMessage="more than 0" runat="server" ForeColor="Red" Display="Dynamic"/>--%>
-                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill This" ControlToValidate="txt_unit_cost" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>                               
-                                            
-                                    <asp:TextBox ID="txt_order_total"  ReadOnly="true" class="form-control" runat="server" ></asp:TextBox>                               
+                                    <asp:Label ID="Label10" runat="server" Text="Sub Total" Font-Size="Medium" ></asp:Label>
+                                    <asp:TextBox ID="txt_order_sub_total"  ReadOnly="true" class="form-control" runat="server" ></asp:TextBox>                      
                                 </div>
                             </div>
-                            
-                            <div class="col-xs-2 align">
+                            <div class="col-xs-2">   
+                                
+                                <div class="form-group">  
+                                      <asp:Label ID="Label5" runat="server" Text="Total" Font-Size="Medium" ></asp:Label>
+                                    <asp:TextBox ID="txt_order_total"  ReadOnly="true" class="form-control" runat="server" ></asp:TextBox>                            
+                                </div>
+                            </div>
+                            <div class="col-xs-2">   
+                                
                                 <div class="form-group">  
                                     <br />
-                                <!-- Change this to a button or input when using this as a form -->
-
-                                    <asp:Button ID="Button3" class="btn btn-default" runat="server" Text="Add" CausesValidation="false" />
+                                    <div class="checkbox">
+                                         <asp:CheckBox ID="chck_payment" runat="server" />
+                                        <asp:Label ID="Label8" runat="server" Text="Amount Paid" Font-Size="Medium" ></asp:Label>                         
+                                     </div>
+                                 </div>
+                            </div>
+                            <div class="col-xs-2">   
                                 
+                                <div class="form-group"> 
+                                    <br /> 
+                                    <div class="checkbox">
+                                         <asp:CheckBox ID="chck_ship" runat="server" />
+                                        <asp:Label ID="Label9" runat="server" Text="To Be Shipped" Font-Size="Medium" ></asp:Label>
+                                      </div>
+                                                         
                                 </div>
                             </div>
+                            <div class="col-xs-2">   
+                                
+                                <div class="form-group">  
+                                    <br />
+                                        
+                                            <asp:Button ID="Button3" class="btn btn-default" runat="server" Text="Place Order" CausesValidation="false" />                           
+                                        
+                                    </div>
+                            </div>
+                            
+                            
 
         </ContentTemplate>
 

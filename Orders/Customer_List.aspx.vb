@@ -12,7 +12,7 @@ Partial Class Products_Supplier_List
 
         Dim li As System.Web.UI.HtmlControls.HtmlGenericControl
 
-        li = cp.FindControl("id1")
+        li = cp.FindControl("id3")
 
         'li = Page.Master.FindControl("id4")
 
@@ -29,8 +29,20 @@ Partial Class Products_Supplier_List
     'End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("~/Orders/Orders_Add.aspx")
+        Response.Redirect("~/Orders/Customer_Add.aspx")
     End Sub
 
-   
+    Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        'GridView1.DataSource = SqlDataSource1
+        If TextBox1.Text = "" Then
+
+            GridView1.DataSourceID = SqlDataSource1.ID
+            GridView1.DataBind()
+            TextBox1.Focus()
+        Else
+            GridView1.DataSourceID = SqlDataSource2.ID
+            GridView1.DataBind()
+            TextBox1.Focus()
+        End If
+    End Sub
 End Class

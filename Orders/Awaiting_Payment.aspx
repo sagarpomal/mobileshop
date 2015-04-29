@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Orders/MasterPage_Orders.master" AutoEventWireup="false" CodeFile="Order_List.aspx.vb" Inherits="Products_Supplier_List" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Orders/MasterPage_Orders.master" AutoEventWireup="false" CodeFile="Awaiting_Payment.aspx.vb" Inherits="Products_Supplier_List" %>
 <%@ MasterType VirtualPath="~/Orders/MasterPage_Orders.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ChildContent1" Runat="Server">
 
@@ -15,16 +15,7 @@
 
 
     <br />
-    <div class="row">
-        <div class="col-lg-6">
-    <div class="btn-group" role="group" >
-        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" Text="Add New Order" class="btn btn-default" />
-    </div>
-    <br />
-    <br />
     
-    </div>
-    </div>
     <%--<div class="form-group">
     <asp:TextBox ID="TextBox1" onkeyup="RefreshUpdatePanel();" runat="server" class="form-control" placeholder="    Search here for Products"></asp:TextBox>
     </div>--%>  
@@ -40,12 +31,12 @@
         <%--#284775--%>
         <Columns>
 
-            <asp:BoundField DataField="ID" HeaderText="Order No." SortExpression="ID" InsertVisible="False" ReadOnly="True" />
-            <asp:BoundField DataField="OrderDate" HeaderText="Order Date" dataformatstring="{0:MM/dd/yyyy}" SortExpression="OrderDate" />
-            <asp:BoundField DataField="OrderTotal" HeaderText="Order Total" SortExpression="OrderTotal" />
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="OrderDate" dataformatstring="{0:MM/dd/yyyy}" HeaderText="OrderDate" SortExpression="OrderDate" />
+            <asp:BoundField DataField="OrderTotal" HeaderText="OrderTotal" SortExpression="OrderTotal" />
             <asp:BoundField DataField="CompanyID" HeaderText="CompanyID" SortExpression="CompanyID" Visible="False" />
             
-            <asp:CheckBoxField DataField="IsActive" />
+            <asp:CheckBoxField DataField="IsActive" HeaderText="Paid" SortExpression="IsActive" Visible="False" />
             
         </Columns>
 
@@ -66,9 +57,11 @@
 
 <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Categories.ID AS Expr1, Categories.Category, Categories.CompanyID AS Expr3, Suppliers.ID, Suppliers.SupplierName, Suppliers.CompanyID, Suppliers.ID AS Expr4, Products.CompanyID AS Expr6 FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.ID INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID"></asp:SqlDataSource>--%>
     
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT ID, OrderDate, OrderTotal, CompanyID, IsActive FROM Orders WHERE (CompanyID = @CompanyID)" >
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT ID, OrderDate, OrderTotal, CompanyID, IsActive FROM Orders WHERE (CompanyID = @CompanyID) AND (IsActive = @IsActive)" >
     <SelectParameters>
         <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
+        
+        <asp:Parameter DefaultValue="False" Name="IsActive" />
         
     </SelectParameters>
     </asp:SqlDataSource>

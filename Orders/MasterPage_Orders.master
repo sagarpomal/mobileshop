@@ -10,7 +10,7 @@
         <%--<li class="active" id="Li2" runat = "server"><asp:LinkButton ID="New_Product"  runat="server" CausesValidation="false">New Product</asp:LinkButton></li>--%>
         <li class="" id="id2" runat = "server"><asp:LinkButton ID="lk_Inventory_Details"  runat="server" CausesValidation="false"> Awaiting Payments</asp:LinkButton></li>
         <li class="" id="id3" runat = "server"><asp:LinkButton ID="lk_Categories"  runat="server" CausesValidation="false"> Customers</asp:LinkButton></li>
-        <li class="" id="id4" runat = "server"><asp:LinkButton ID="lk_Suppliers"  runat="server" CausesValidation="false"> Orders to be Shipped</asp:LinkButton></li>
+        <%--<li class="" id="id4" runat = "server"><asp:LinkButton ID="lk_Suppliers"  runat="server" CausesValidation="false"> Orders to be Shipped</asp:LinkButton></li>--%>
 
     </ul>
    

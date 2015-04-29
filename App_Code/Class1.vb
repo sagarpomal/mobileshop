@@ -15,7 +15,7 @@ Public Class Class1
 
     'Public conn_str As String = "Data Source=WIN-52CLC5SG777;Initial Catalog=D:\MOBILE_SHOP.MDF;Integrated Security=True"
     Public conn_str As String = "Data Source=SAGAR-PC;Initial Catalog=Mobile;Integrated Security=True"
-
+    'Public conn_str As String = "Server=tcp:xup96pku5k.database.windows.net,1433;Database=mobileshopgtu_db;User ID=sagarpomal@xup96pku5k;Password=Sagar_99;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;"
 
 
     Public Sub close_conn()

@@ -1,16 +1,15 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Orders/MasterPage_Orders.master" AutoEventWireup="false" CodeFile="Order_List.aspx.vb" Inherits="Products_Supplier_List" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Orders/MasterPage_Orders.master" AutoEventWireup="false" CodeFile="Customer_List.aspx.vb" Inherits="Products_Supplier_List" %>
 <%@ MasterType VirtualPath="~/Orders/MasterPage_Orders.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ChildContent1" Runat="Server">
-
-    <%-- <script type="text/javascript">
+    
+    <script type="text/javascript">
     function RefreshUpdatePanel() {
         __doPostBack('<%= TextBox1.ClientID%>', '');
     };
-    </script>--%>
+    </script>
     
     
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
 
 
 
@@ -18,34 +17,40 @@
     <div class="row">
         <div class="col-lg-6">
     <div class="btn-group" role="group" >
-        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" Text="Add New Order" class="btn btn-default" />
+        &nbsp;&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" Text="Add New Customer" class="btn btn-default" />
     </div>
     <br />
     <br />
     
     </div>
     </div>
-    <%--<div class="form-group">
-    <asp:TextBox ID="TextBox1" onkeyup="RefreshUpdatePanel();" runat="server" class="form-control" placeholder="    Search here for Products"></asp:TextBox>
-    </div>--%>  
-
+    <div class="form-group">
+    <asp:TextBox ID="TextBox1" runat="server" onkeyup="RefreshUpdatePanel();" class="form-control" placeholder="    Search here for Customers" AutoPostBack="true"></asp:TextBox>
+    </div>
+         
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-
-
 
     <asp:GridView ID="GridView1" runat="server"  class="table" CellPadding="4"  AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="ID" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#333333" />
         <%--#284775--%>
         <Columns>
+            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Orders/Customer_Add.aspx?SupId={0}"
+            HeaderText="" ItemStyle-Width = "150" DataTextFormatString="View" >
+            <ItemStyle Width="70px"></ItemStyle>
+            </asp:HyperLinkField>
 
-            <asp:BoundField DataField="ID" HeaderText="Order No." SortExpression="ID" InsertVisible="False" ReadOnly="True" />
-            <asp:BoundField DataField="OrderDate" HeaderText="Order Date" dataformatstring="{0:MM/dd/yyyy}" SortExpression="OrderDate" />
-            <asp:BoundField DataField="OrderTotal" HeaderText="Order Total" SortExpression="OrderTotal" />
+            <asp:BoundField DataField="CustomerName" HeaderText="CustomerName" SortExpression="CustomerName" />
+            
+            <asp:BoundField DataField="Company" HeaderText="Company" SortExpression="Company" />
+            <asp:BoundField DataField="MobilePhone" HeaderText="MobilePhone" SortExpression="MobilePhone" />
+            
+            <asp:BoundField DataField="EmailAddress" HeaderText="EmailAddress" SortExpression="EmailAddress" />
+            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" Visible="False" />
             <asp:BoundField DataField="CompanyID" HeaderText="CompanyID" SortExpression="CompanyID" Visible="False" />
             
-            <asp:CheckBoxField DataField="IsActive" />
+            <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" Visible="False" />
             
         </Columns>
 
@@ -64,28 +69,29 @@
 </asp:GridView>
     
 
-<%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Categories.ID AS Expr1, Categories.Category, Categories.CompanyID AS Expr3, Suppliers.ID, Suppliers.SupplierName, Suppliers.CompanyID, Suppliers.ID AS Expr4, Products.CompanyID AS Expr6 FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.ID INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID"></asp:SqlDataSource>--%>
-    
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT ID, OrderDate, OrderTotal, CompanyID, IsActive FROM Orders WHERE (CompanyID = @CompanyID)" >
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [Company], [EmailAddress], [CompanyID], [MobilePhone], [Address], [CustomerName] FROM [Customers] WHERE ([CompanyID] = @CompanyID)">
     <SelectParameters>
         <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
-        
     </SelectParameters>
     </asp:SqlDataSource>
 
-<%--<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT Products.ProductCode, Products.ProductName, Products.StandardCost, Products.Description, Products.ID AS Expr2, Products.ListPrice, Products.CategoryID, Products.SupplierID, Categories.ID AS Expr1, Categories.Category, Categories.CompanyID AS Expr3, Suppliers.ID, Suppliers.SupplierName, Suppliers.CompanyID, Suppliers.ID AS Expr4, Products.CompanyID AS Expr6 FROM Products INNER JOIN Categories ON Products.CategoryID = Categories.ID AND Products.CompanyID = (@CompanyID) AND Products.ProductName LIKE '%' + @ProductName + '%'  INNER JOIN Suppliers ON Products.SupplierID = Suppliers.ID" >
+
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MobileConnectionString %>" SelectCommand="SELECT [ID], [Company], [EmailAddress], [MobilePhone], [Address], [CustomerName] FROM [Customers] WHERE (([CompanyID] = @CompanyID) AND ([CustomerName] LIKE '%' + @CustomerName + '%'))">
     <SelectParameters>
         <asp:CookieParameter CookieName="CompanyID" Name="CompanyID" Type="Int32" />
-        <asp:ControlParameter ControlID="TextBox1" Name="ProductName" PropertyName="Text" Type="String" />
+        <asp:ControlParameter ControlID="TextBox1" Name="CustomerName" PropertyName="Text" Type="String" />
     </SelectParameters>
-    </asp:SqlDataSource>--%>
+    </asp:SqlDataSource>
+    
+
+
 
 
          </ContentTemplate>
-        <%-- <Triggers>
+         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="TextBox1" />
         </Triggers>
-                   --%>               </asp:UpdatePanel>
+                                  </asp:UpdatePanel>
 
                                         <asp:UpdateProgress ID="UpdateProgress1" runat="server" DynamicLayout="true" AssociatedUpdatePanelID="UpdatePanel1" >
 
@@ -113,9 +119,6 @@
                                         </ProgressTemplate>
                                             
                                         </asp:UpdateProgress>
-
-
-
 
 </asp:Content>
 

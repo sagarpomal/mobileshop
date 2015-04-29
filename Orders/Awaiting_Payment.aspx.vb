@@ -12,7 +12,7 @@ Partial Class Products_Supplier_List
 
         Dim li As System.Web.UI.HtmlControls.HtmlGenericControl
 
-        li = cp.FindControl("id1")
+        li = cp.FindControl("id2")
 
         'li = Page.Master.FindControl("id4")
 
@@ -28,9 +28,7 @@ Partial Class Products_Supplier_List
     '    ClientScript.RegisterStartupScript(Me.GetType(), "script", s, True)
     'End Sub
 
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("~/Orders/Orders_Add.aspx")
-    End Sub
+    
 
    
 End Class
