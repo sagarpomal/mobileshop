@@ -29,7 +29,7 @@ Partial Class Products_Supplier_List
     'End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect("~/Orders/Orders_Add.aspx")
+        Response.Redirect("~/Orders/Order_Add.aspx")
     End Sub
 
    

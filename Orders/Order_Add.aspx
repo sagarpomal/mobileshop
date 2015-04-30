@@ -7,7 +7,7 @@
 
 
 
-   <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
+    re()&quot;!/ORders<asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <br />
     <div class="row">
         <%--<div class="col-xs-10">--%>
