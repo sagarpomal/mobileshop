@@ -36,7 +36,7 @@
         <AlternatingRowStyle BackColor="White" ForeColor="#333333" />
         <%--#284775--%>
         <Columns>
-            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Orders/Customer_Add.aspx?SupId={0}"
+            <asp:HyperLinkField DataTextField="ID" DataNavigateUrlFields="Id" DataNavigateUrlFormatString="~/Orders/Customer_Add.aspx?CustID={0}"
             HeaderText="" ItemStyle-Width = "150" DataTextFormatString="View" >
             <ItemStyle Width="70px"></ItemStyle>
             </asp:HyperLinkField>

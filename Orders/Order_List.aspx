@@ -11,9 +11,6 @@
     
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-
-
-
     <br />
     <div class="row">
         <div class="col-lg-6">

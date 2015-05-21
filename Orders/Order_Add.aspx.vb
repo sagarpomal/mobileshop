@@ -10,11 +10,20 @@ Partial Class Products_Suppliers_View
     Public Y As Double
     Dim i As Double
     Dim sub_total As Double
+    Dim available As Integer
 
     Public Sub product_total()
+        If txt_qty.Text <> "" And IsNumeric(txt_qty.Text) Then
+            If txt_unit_cost.Text <> "" And IsNumeric(txt_unit_cost.Text) Then
+                If txt_discount.Text <> "" And IsNumeric(txt_discount.Text) Then
 
-        sub_total = Convert.ToDouble(txt_qty.Text) * Convert.ToDouble(txt_unit_cost.Text)
-        txt_total_price.Text = sub_total - (sub_total * Convert.ToDouble(txt_discount.Text) / 100)
+                
+                    sub_total = Convert.ToDouble(txt_qty.Text) * Convert.ToDouble(txt_unit_cost.Text)
+                    txt_total_price.Text = sub_total - (sub_total * Convert.ToDouble(txt_discount.Text) / 100)
+
+                End If
+            End If
+        End If
 
     End Sub
 
@@ -100,7 +109,7 @@ Partial Class Products_Suppliers_View
             
         End If
         'For Each row3 As GridViewRow In GridView1.Rows
-        Dim available As Integer
+
         obj = OBJ1.getdata("select productid, available from inventory where productid = '" & cb_product_name.SelectedValue & "' ")
         If obj.HasRows Then
             If obj.HasRows Then
@@ -175,17 +184,20 @@ Partial Class Products_Suppliers_View
             End While
             OBJ1.close_conn()
 
-            Dim availalbe As Integer
+            Dim available1 As Integer
 
             For Each row3 As GridViewRow In GridView1.Rows
-                ' obj = OBJ1.getdata("select productid, available from inventory where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
-                'If obj.HasRows Then
-                '    While obj.Read
-                '        availalbe = obj.Item("available")
-                '    End While
-                'OBJ1.close_conn()
-                OBJ1.adddata("update inventory set available='" & availalbe - (Convert.ToDouble(row3.Cells(2).Text)) & "' where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
-                OBJ1.adddata("insert into orderdetails(quantity, unitprice, orderid, productid, companyid, discount) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "', '" & Convert.ToDouble(row3.Cells(5).Text) & "')  ")
+                obj = OBJ1.getdata("select productid, available from inventory where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
+                If obj.HasRows Then
+                    While obj.Read
+                        available1 = obj.Item("available")
+                    End While
+                End If
+                OBJ1.close_conn()
+                MsgBox(available1)
+                MsgBox(Convert.ToDouble(row3.Cells(2).Text))
+                OBJ1.adddata("update inventory set available='" & available1 - (Convert.ToDouble(row3.Cells(2).Text)) & "' where productid = '" & Convert.ToDouble(row3.Cells(0).Text) & "' ")
+                OBJ1.adddata("insert into orderdetails(quantity, unitprice, orderid, productid, companyid, discount, total_price) values ('" & Convert.ToDouble(row3.Cells(2).Text) & "', '" & Convert.ToDouble(row3.Cells(3).Text) & "','" & order_id & "', '" & Convert.ToDouble(row3.Cells(0).Text) & "' , '" & Request.Cookies("companyid").Value & "', '" & Convert.ToDouble(row3.Cells(5).Text) & "', '" & Convert.ToDouble(row3.Cells(6).Text) & "')  ")
 
                 'Else
                 '    OBJ1.close_conn()

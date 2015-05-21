@@ -10,7 +10,7 @@ Partial Class MasterPage_Tabs
         Me.id2.Attributes("class") = ""
         Me.id3.Attributes("class") = ""
         'Me.id4.Attributes("class") = ""
-
+        Response.Redirect("~/Orders/Order_List.aspx")
 
     End Sub
 
